@@ -35,3 +35,6 @@
 *.json
 *.csv
 *.txt
+
+# Junk
+test.cpp

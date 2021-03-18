@@ -2,33 +2,54 @@
 
 #include <string>
 #include <vector>
+#include <iostream>
+#include <cctype>
 
 using std::string;
 using std::vector;
+using std::cout;
+using std::endl;
 
 class User {
   private:
     int const ID;
-    string const firstName;
-    string const lastName;
+    string firstName;
+    string lastName;
     vector<string> aliases;
     vector<string> emails;
-    string paypalEmail;
-  public:
-    int const getID();
-    string const getFirst();
-    string const getLast();
-    string const getFull();
-    string const getAlias();
-    vector<string> const getAliases();
-    vector<string> const getEmail();
-    string const getPaypal();
+    vector<string> paypalEmail;
 
-    void setAliases();
+    string username;
+    string password;
+  public:
+    //GETTERS
+    int const getID();
+    string getFirst();
+    string getLast();
+    string getFull();
+    string getAlias();
+    vector<string> getAliases();
+    string getEmail();
+    vector<string> getEmails();
+    string getPaypal();
+    vector<string> getPaypals();
+    string getUsername();
+    string getPassword();
+
+    //SETTERS
+    void initAliases(string);
     void setEmail();
     void setPaypal();
+    void setUsername();
+    void setPassword();
 
-    void addAlias();
+    //ADDERS
+    void addAlias(string);
     void addEmail();
     void addPaypal();
+
+    //REMOVERS
+    void subAlias(string);
+    void subEmail();
+    void subPaypal();
 };
