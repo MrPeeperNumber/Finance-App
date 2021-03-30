@@ -21,14 +21,14 @@ class Item {
     //GETTERS
     int const getID();
     Date const getDateBought();
-    double const getCost();
-    string const getBoughtBy();
-    vector<string> const getDebtorNames();
-    vector<string> const getDebtorIDs();
-    int const getNumDebtors();
+    double getCost();
+    string getBoughtBy();
+    vector<string> getDebtorNames();
+    vector<int> getDebtorIDs();
+    int getNumDebtors();
 
     //SETTERS
-    void setDateBought();
+    void setDateBought(string);
     void setCost();
     void setBoughtBy();
     void setDebtorNames();
@@ -38,4 +38,7 @@ class Item {
     //ADDERS
     void addDebtorName();
     void addDebtorID();
+    void addToCat();
+
+    //REMOVERS
 };

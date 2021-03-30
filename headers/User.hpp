@@ -38,18 +38,18 @@ class User {
 
     //SETTERS
     void initAliases(string);
-    void setEmail();
-    void setPaypal();
-    void setUsername();
-    void setPassword();
+    void setEmail(string);
+    void setPaypal(string);
+    void setUsername(string);
+    void setPassword(string);
 
     //ADDERS
     void addAlias(string);
-    void addEmail();
-    void addPaypal();
+    void addEmail(string);
+    void addPaypal(string);
 
     //REMOVERS
     void subAlias(string);
-    void subEmail();
-    void subPaypal();
+    void subEmail(string);
+    void subPaypal(string);
 };

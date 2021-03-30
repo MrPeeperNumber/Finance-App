@@ -65,20 +65,20 @@ void User::initAliases(string input) {
   aliases.push_back(input);
 }
 
-void User::setEmail() {
-
+void User::setEmail(string input) {
+  emails.push_back(input);
 }
 
-void User::setPaypal() {
-
+void User::setPaypal(string input) {
+  paypalEmail.push_back(input);
 }
 
-void User::setUsername() {
-
+void User::setUsername(string input) {
+  username = input;
 }
 
-void User::setPassword() {
-
+void User::setPassword(string input) {
+  password = input;
 }
 //END SETTERS
 
@@ -87,12 +87,12 @@ void User::addAlias(string input) {
   aliases.push_back(input);
 }
 
-void User::addEmail() {
-
+void User::addEmail(string input) {
+  emails.push_back(input);
 }
 
-void User::addPaypal() {
-
+void User::addPaypal(string input) {
+  paypalEmail.push_back(input);
 }
 //END ADDERS
 
@@ -106,8 +106,36 @@ void User::subAlias(string input) {
   for(auto i = 0; i < aliases.size(); i++) {
     if(aliases.at(i) == input) {
       aliases.erase(aliases.begin()+i);
-      return;
+      break;
     }
   }
-
 }
+
+void User::subEmail(string input) {
+  int i = 0;
+  for(auto j : input) {
+    input[i] = std::tolower(input[i]);
+  }
+
+  for(auto i = 0; i < emails.size(); i++) {
+    if(emails.at(i) == input) {
+      emails.erase(emails.begin()+i);
+      break;
+    }
+  }
+}
+
+void User::subPaypal(string input) {
+  int i = 0;
+  for(auto j : input) {
+    input[i] = std::tolower(input[i]);
+  }
+
+  for(auto i = 0; i < paypalEmail.size(); i++) {
+    if(paypalEmail.at(i) == input) {
+      paypalEmail.erase(paypalEmail.begin()+i);
+      break;
+    }
+  }
+}
+//END REMOVERS
