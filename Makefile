@@ -12,6 +12,7 @@ edit : $(objects)
 
 driver.o : $(drive)
 	$(recip) src/driver.cpp
+UserVect.o
 User.o : $(user)
 	$(recip) src/User.cpp
 MonthExp.o : $(monthly)
@@ -22,6 +23,7 @@ Category.o : $(cat)
 	$(recip) src/Category.cpp
 Calcs.o : $(calc)
 	$(recip) src/Calcs.cpp
+
 
 clean:
 	rm *.o

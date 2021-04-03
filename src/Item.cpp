@@ -48,24 +48,92 @@ void Item::setCost(double input) {
 
 void Item::setDebtorNames(string input) {
 
-  int i = 0;
-  int j = 0;
   string temp = "";
-  string temp2 = "";
 
-  for(i = 0; i < input.length(); i++) {
-    if(input.at(i) != ",") { temp+=input.at(i); }
+  for(auto i = 0; i < input.length(); i++) {
+
+    if(input.at(i) != ',') temp += input.at(i);
     else {
-      if(temp[0] == " ") {
-        for(auto k = 1; k < temp.length(); k++) {
-          temp2+=temp[k];
-        }
-        debtorNames.push_back(temp2);
-        temp = "";
-        temp2 = "";
+      debtorNames.push_back(temp);
+      temp = "";
+      i++;
+    }
+  }
+  debtorNames.push_back(temp);
+
+}
+
+void Item::setDebtorIDs() {
+
+  for(auto i = 0; i < usersList.size(); i++) {
+    if(items == usersList[i].getFirst()) { debtorIDs.push_back(usersList[i].getID()); }
+    else if(items == userList[i].getLast()) { debtorIDs.push_back(usersList[i].getID()); }
+    else {
+      for(auto j = 0; j < usersList[i].size(); i++) {
+        if(items == userList[i].getAliases(j) { debtorIDs.push_back(usersList[i].getID()); }
       }
     }
   }
 
 }
+
+void Item::setNumDebtors() {
+  numDebtors = debtorNames.size();
+}
 //END SETTERS
+
+//ADDERS
+void Item::addDebtorName(string input) {
+  debtorNames.push_back(input);
+  addDebtorID(input);
+}
+
+void Item::addDebtorID(string input) {
+
+  for(auto i = 0; i < usersList.size(); i++) {
+    if(input == usersList[i].getFirst()) { debtorIDs.push_back(usersList[i].getID()); }
+    else if(input == userList[i].getLast()) { debtorIDs.push_back(usersList[i].getID()); }
+    else {
+      for(auto j = 0; j < usersList[i].size(); i++) {
+        if(input == userList[i].getAliases(j) { debtorIDs.push_back(usersList[i].getID()); }
+      }
+    }
+  }
+
+}
+
+void Item::addToCat() {
+
+  for(auto i = 0; i < usersList.size(); i++) {
+    if(items == categories[i].getName() { categories[i].addItem(getID()); }
+  }
+
+}
+//END ADDERS
+
+//REMOVERS
+void Item::subDebtorName(string input) {
+
+  auto i = 0;
+
+  for(i = 0; i < debtorNames.size(); i++) {
+    if(debtorNames.at(i) == input) {
+      debtorNames.erase(debtorNames.begin()+i);
+      break;
+    }
+  }
+
+  subDebtorID(i);
+
+}
+
+void Item::subDebtorID(int i) {
+
+  debtorIDs.erase(debtorIDs.begin()+i);
+
+}
+
+void Item::subFromCat() {
+
+}
+//END REMOVERS

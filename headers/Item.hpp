@@ -41,4 +41,7 @@ class Item {
     void addToCat();
 
     //REMOVERS
+    void subDebtorName();
+    void subDebtorID();
+    void subFromCat();
 };

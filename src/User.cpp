@@ -19,8 +19,8 @@ string User::getFull() {
 
 //not sure what this will do, if anything
 //existent in case it's needed
-string User::getAlias() {
-  return "Fake string";
+string User::getAlias(int input) {
+  return aliases.at(input);
 }
 
 vector<string> User::getAliases() {
@@ -47,7 +47,7 @@ vector<string> User::getPaypals() {
     return paypalEmail;
   }
   else {
-    cout << "No paypal emails found for " << getAlias() << endl;
+    cout << "No paypal emails found for " << getAlias(0) << endl;
   }
 }
 

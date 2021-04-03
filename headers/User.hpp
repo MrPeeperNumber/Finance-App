@@ -27,7 +27,7 @@ class User {
     string getFirst();
     string getLast();
     string getFull();
-    string getAlias();
+    string getAlias(int);
     vector<string> getAliases();
     string getEmail();
     vector<string> getEmails();
