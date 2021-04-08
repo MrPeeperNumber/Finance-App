@@ -1,22 +1,33 @@
-objects = driver.o User.o MonthExp.o Item.o Category.o Calcs.o
+objects = driver.o UserVect.o User.o Add.o Remove.o MonthExp.o Date.o Item.o Category.o Calcs.o
 recip = g++ -c
 driver = src/driver.cpp
 user = src/User.cpp headers/User.hpp
+add = src/addUser.cpp headers/addUser.hpp
+remove = src/rmUser.cpp headers/rmUser.hpp
+vect = src/UserVect.cpp headers/UserVect.hpp
 monthly = src/MonthExp.cpp headers/MonthExp.hpp
+date = src/Date.cpp headers/Date.hpp
 item = src/Item.cpp headers/Item.hpp
 cat = src/Category.cpp headers/Category.hpp
 calc = src/Calcs.cpp headers/Calcs.hpp
 
-edit : $(objects)
-	g++ -o edit $(objects)
+driver : $(objects)
+	g++ -o driver $(objects)
 
 driver.o : $(drive)
 	$(recip) src/driver.cpp
-UserVect.o
+UserVect.o : $(vect)
+	$(recip) src/UserVect.cpp
 User.o : $(user)
 	$(recip) src/User.cpp
+Add.o : $(add)
+	$(recip) src/addUser.cpp
+Remove.o : $(remove)
+	$(recip) src/rmUser.cpp
 MonthExp.o : $(monthly)
 	$(recip) src/MonthExp.cpp
+Date.o : $(date)
+	$(recip) src/Date.cpp
 Item.o : $(item)
 	$(recip) src/Item.cpp
 Category.o : $(cat)
@@ -24,9 +35,7 @@ Category.o : $(cat)
 Calcs.o : $(calc)
 	$(recip) src/Calcs.cpp
 
-
 clean:
 	rm *.o
-
 clean2:
-	rm edit *.o
+	rm driver *.o

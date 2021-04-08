@@ -5,7 +5,7 @@ int const Item::getID() {
   return ID;
 }
 
-Date const Item::getDateBought() {
+Date Item::getDateBought() {
   return dateBought;
 }
 
@@ -32,14 +32,30 @@ int Item::getNumDebtors() {
 
 //SETTERS
 void Item::setDateBought(string input) {
-  int month, day, year;
+  string temp = "";
+  int inc = 0;
 
-  //do something that converts string of numbers into a date
+  for(auto i = 0; i < input.length(); i++) {
+    if(input[i] != '/' && input[i] != '.') {
+      temp += input[i];
+    }
+    else {
+      switch (inc) {
+        case 0:
+          dateBought.setDay(std::stoi(temp));
+          break;
+        case 1:
+          dateBought.setMonth(std::stoi(temp));
+          break;
+        case 2:
+          dateBought.setYear(std::stoi(temp));
+          break;
+      };
+      temp = "";
+      inc++;
+    }
+  }
 
-  dateBought.setMonth(month);
-  dateBought.setDay(day);
-  dateBought.setYear(year);
-  dateBought.asString(input);
 }
 
 void Item::setCost(double input) {
@@ -66,11 +82,13 @@ void Item::setDebtorNames(string input) {
 void Item::setDebtorIDs() {
 
   for(auto i = 0; i < usersList.size(); i++) {
-    if(items == usersList[i].getFirst()) { debtorIDs.push_back(usersList[i].getID()); }
-    else if(items == userList[i].getLast()) { debtorIDs.push_back(usersList[i].getID()); }
-    else {
-      for(auto j = 0; j < usersList[i].size(); i++) {
-        if(items == userList[i].getAliases(j) { debtorIDs.push_back(usersList[i].getID()); }
+    for(auto items : debtorNames) {
+      if(items == usersList[i].getFirst()) { debtorIDs.push_back(usersList[i].getID()); }
+      else if(items == userList[i].getLast()) { debtorIDs.push_back(usersList[i].getID()); }
+      else {
+        for(auto j = 0; j < usersList[i].size(); i++) {
+          if(items == userList[i].getAliases(j)) { debtorIDs.push_back(usersList[i].getID()); }
+        }
       }
     }
   }
@@ -95,7 +113,7 @@ void Item::addDebtorID(string input) {
     else if(input == userList[i].getLast()) { debtorIDs.push_back(usersList[i].getID()); }
     else {
       for(auto j = 0; j < usersList[i].size(); i++) {
-        if(input == userList[i].getAliases(j) { debtorIDs.push_back(usersList[i].getID()); }
+        if(input == userList[i].getAliases(j)) { debtorIDs.push_back(usersList[i].getID()); }
       }
     }
   }
@@ -104,8 +122,8 @@ void Item::addDebtorID(string input) {
 
 void Item::addToCat() {
 
-  for(auto i = 0; i < usersList.size(); i++) {
-    if(items == categories[i].getName() { categories[i].addItem(getID()); }
+  for(auto i = 0; i < categories.size(); i++) {
+    if(category == categories[i].getName()) { categories[i].addItem(getID()); }
   }
 
 }
@@ -135,5 +153,16 @@ void Item::subDebtorID(int i) {
 
 void Item::subFromCat() {
 
+  for(auto i = 0; i < categories.size(); i++) {
+    if(category == categories[i].getName()) { categories[i].subItem(getID()); }
+  }
+
 }
 //END REMOVERS
+
+
+//NOTES
+/*
+ * L:107-108
+ * variable "categories" refers to an undeclared vector of partially written category objects
+ */
