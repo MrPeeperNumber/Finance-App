@@ -3,6 +3,7 @@
 #include "Item.hpp"
 #include <string>
 #include <vector>
+#include <iostream>
 
 using std::string;
 using std::vector;
@@ -19,7 +20,7 @@ class Category {
     vector<Item> const getItems();
 
     //SETTERS
-    void setName();
+    void setName(string);
 
     //ADDERS
     void addItem();
